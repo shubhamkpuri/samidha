@@ -161,27 +161,125 @@
 
 
       <!-- Maps Section -->
+      <!-- Maps Section -->
 
-      <section class="content-section bg-light pt-5 pb-5" id="center">
-      <div class="container text-center">
-        <div class="h1">
-          Our Centers
-        </div>
-        <div class="row d-flex flex-wrap">
-          <div class="col-lg-12">
-              <iframe width="100%" height="500" src="https://maps.google.com/maps?width=100%&amp;height=300&amp;hl=en&amp;q=Harphool%20Vihar%2C%20New%20Delhi+(Portfolio)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.maps.ie/create-google-map/">Add map to website</a></iframe>
+         <section class="content-section bg-light pt-5 pb-5" id="center">
+           <div class="container text-center">
+             <div class="h1 pt-5 pb-5">
+               Our Centers
+             </div>
+             <div class="row d-flex flex-wrap pb-5">
+               <div class="col-lg-12">
+                   <div id="map" style="width: 100%; height: 70vh;"></div>
 
-          </div>
-        </div>
-        <!-- <div class="p-3">
-          <input class="btn btn-primary rounded-pill" type="button" name="button1" value="Join Now" id="" />
-        </div> -->
-      </div>
-    </section>
+               </div>
+             </div>
+
+           </div>
+         </section>
+
+           <!-- Maps Section Ends -->
+
+           <!-- Image Gallery Start-->
+           <section class="content-section bg-light pt-5 pb-5" id="center">
+           <div class="container text-center">
+             <div class="h1 pt-5 pb-5">
+               Image Gallery
+             </div>
+             <div class="row d-flex flex-wrap pb-5">
+                 <div class="col-lg-4">
+                   <img src="img/first.jpg" alt="" style="height: 100%; width: 100%;">
+                 </div>
+                 <div class="col-lg-4">
+                   <img src="img/first.jpg" alt="" style="height: 100%; width: 100%;">
+                 </div>
+                 <div class="col-lg-4">
+                   <img src="img/first.jpg" alt="" style="height: 100%; width: 100%;">
+                 </div>
+             </div>
+
+           </div>
+         </section>
+
+
+           <!-- Image Gallery Ends -->
+
+
+
 
       <!-- Maps Section Ends -->
 
 
 
 <% include partials/footercontent %>
+
+<script>
+    var map;
+    var markers = [];
+
+
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 28.557440, lng: 77.235909},
+        zoom: 14
+      });
+
+      var locations = [
+        {title: 'G.B.Pant Government Engineering College', location: {lat: 28.5466629, lng: 77.2694689}},
+        {title: 'IIIT-Delhi', location: {lat: 28.5456329, lng: 77.2709618}},
+        {title: "Indian Institute of Technology Delhi", location: {lat: 28.5438087, lng: 77.1866282}},
+        {title: "Bluebells School International", location: {lat: 28.5585064, lng: 77.2356716}},
+        {title: "Lady Shri Ram College For Women", location: {lat: 28.5592995, lng: 77.2358339}},
+        {title: "Balwant Rai Mehta Vidya Bhawan ", location: {lat: 28.5632358, lng: 77.2327508}},
+        {title: "K S K Academy Sr. Sec. Public School", location: {lat: 28.502293, lng: 77.2455255}},
+        {title: "Jagriti Public School", location: {lat: 28.5014574, lng: 77.2445498}},
+        {title: "The Frank Anthony Public School", location: {lat: 28.5609192, lng: 77.2333765}},
+        {title: "Don Bosco School", location: {lat: 28.528301, lng: 77.2446747}}
+      ];
+
+      var largeInfowindow = new google.maps.InfoWindow();
+      var bounds = new google.maps.LatLngBounds();
+
+
+      for(var i=0; i< locations.length; i++) {
+        var position = locations[i].location;
+        var title = locations[i].title;
+
+        var marker = new google.maps.Marker({
+          map: map,
+          position: position,
+          title: title,
+          animation: google.maps.Animation.DROP,
+          id: i
+        });
+
+        markers.push(marker);
+
+        bounds.extend(marker.position);
+
+        marker.addListener('click', function() {
+          populateInfoWindow(this, largeInfowindow);
+        });
+
+      }
+      function populateInfoWindow(marker, infowindow) {
+        if(infowindow.marker != marker) {
+          infowindow.marker = marker;
+          infowindow.setContent('<div>'+ marker.title + '</div>');
+          infowindow.open(map, marker);
+          infowindow.addListener('closeclick', function() {
+            infowindow.setMarker(null);
+          });
+        }
+      }
+
+
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfBDYZff3THaoreKMud4u6Q5za01tGY7s&v=3&callback=initMap">
+
+  </script>
+  
 <% include partials/footer %>
