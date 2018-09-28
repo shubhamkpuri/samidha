@@ -75,23 +75,9 @@ app.get("/volunteer/show", function(req, res){
 
 });
 
-// Show all notes
-app.get("/notes", isLoggedIn, function(req, res){
-	User.findById(req.user._id).populate("notes").exec(function(err, user){
-		if(err) {
-			console.log(err)
-		} else {
-			res.render("index", {user : user});
-		}
-	});
-});
 
-// Show form to create a new note
-app.get("/notes/new", function(req, res){
-	res.render("new");
-});
 
-// Create a new note
+// Create a new volunteer
 app.post("/volunteer", function(req, res){
   var volunteer = new Volunteer ({
             fname : req.body.fname,
@@ -128,45 +114,6 @@ Volunteer.create(volunteer, function(err, newVolunteer){
         }
     });
 
-		}
-	});
-});
-
-// Show edit form
-app.get("/notes/:id/edit", function(req, res){
-	Note.findById(req.params.id, function(err, foundNote){
-		if(err) {
-			req.flash("Error", "Sorry! your note could not be found!");
-			console.log(err);
-		} else {
-			res.render("edit", {note : foundNote});
-		}
-	});
-});
-
-// Edit
-app.put("/notes/:id/edit", function(req, res){
-	var note = req.body.note;
-	Note.findByIdAndUpdate(req.params.id, note, function(err, updatedNote){
-		if(err) {
-			req.flash("error", "Something went wrong! Please try again.");
-			console.log(err);
-		} else {
-			req.flash("success", "Note updated successfully!");
-			res.redirect("/notes");
-		}
-	});
-});
-
-// Delete note
-app.delete("/notes/:id", function(req, res){
-	Note.findByIdAndRemove(req.params.id, function(err){
-		if(err) {
-			req.flash("error", "Something went wrong! Please try again.");
-			console.log(err);
-		} else {
-			req.flash("success", "Note deleted successfully!");
-			res.redirect("/notes");
 		}
 	});
 });

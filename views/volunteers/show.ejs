@@ -1,21 +1,37 @@
 <% include ../partials/header %>
 <% include ../partials/navbar %>
+<div class="container">
+  <div class=" d-flex  mx-auto  flex-wrap" style="width:70%; margin-top:5rem;">
+    <div class="text-center rounded p-1 m-1 w-100" style="background-color: #d2dae2">
+      <div>
+        <h1 class="text-center">Volunteers</h1>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th> Prefered Center</th>
+              </tr>
+            </thead>
+            <tbody>
 
-<div class="col-lg-5 d-flex flex-wrap">
-  <div class="text-center rounded p-1 m-1 w-100" style="background-color: #d2dae2">
-    <div>
-      <h1 class="text-center">Volunteers</h1>
-      <ul class="list-group">
+            <% volunteers.forEach(function(volunteer) {%>
+              <tr>
+                <td><%= volunteer.fname %></td>
+                <td> <%= volunteer.lname %></td>
+                <td>  <%= volunteer.center1 %> </td>
+              </tr>
 
-        <% volunteers.forEach(function(volunteer) {%>
-        <li class="list-group-item list-group-item-light"><%= volunteer.fname %> <%= volunteer.lname %> <%= volunteer.center1 %></li>
-        <%  }); %>
 
-      </ul>
-      <input class="btn btn-light btn-rounded" type="button" name="button3" value="See All" id="" />
+          <%  }); %>
+        </tbody>
+      </table>
+
+      </div>
     </div>
   </div>
 </div>
+
 <% include ../partials/footercontent %>
 <script src="js/js.js">
 
