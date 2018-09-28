@@ -1,18 +1,18 @@
-var Cp = require("../models/Cp");
+var Campground = require("../models/Campground");
 var Comment = require("../models/comment");
 
 // all the middleare goes here
 var middlewareObj = {};
 
-middlewareObj.checkCpOwnership = function(req, res, next) {
+middlewareObj.checkCampgroundOwnership = function(req, res, next) {
  if(req.isAuthenticated()){
-        Cp.findById(req.params.id, function(err, foundCp){
+        Campground.findById(req.params.id, function(err, foundCampground){
            if(err){
-               req.flash("error", "Cp not found");
+               req.flash("error", "Campground not found");
                res.redirect("back");
            }  else {
-               // does user own the Cp?
-            if(foundCp.author.id.equals(req.user._id)) {
+               // does user own the Campground?
+            if(foundCampground.author.id.equals(req.user._id)) {
                 next();
             } else {
                 req.flash("error", "You don't have permission to do that");

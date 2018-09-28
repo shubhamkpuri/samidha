@@ -1,0 +1,208 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+<div class="" style="margin-top:5rem;">
+
+</div>
+<div class="mb-4"></div>
+<div class="mb-4"></div>
+
+        <div class="row">
+          <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Centres</a>
+              <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Volunteers</a>
+              <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Students</a>
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                  <p class="display-4 text-center">Centers</p>
+
+                <ul class="list-group mb-4">
+                  <li class="list-group-item" style="border: none;">
+                    <div class="row">
+                        <div class="col-md-1">
+                            S. No.
+                        </div>
+                        <div class="col-md-4">
+                            Name
+                        </div>
+                        <div class="col-md-4">
+                            Location
+                        </div>
+                        <div class="col-md-3">
+                            Person Incharge
+                        </div>
+                    </div>
+                  </li>
+                  <hr>
+<!-- to repeat start -->
+<% var v=1; %>
+  <% centers.forEach(function(center){ %>
+                  <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-1">
+                          <%= v %>
+                        </div>
+                        <div class="col-md-4">
+                            <%= center.centerName %>
+                        </div>
+                        <div class="col-md-4">
+                              <%= center.location %>
+                        </div>
+                         <div class="col-md-3">
+                                <%= center.personIncharge %>
+                        </div>
+
+                    </div>
+                  </li>
+                  <% v++; }) %>
+<!-- to repeat Ends -->
+                </ul>
+                <form action="/centers" method="POST" id="add-center-form"  style="display: none;" class="mb-4" >
+                  <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                      <label for="validationDefault01">Center Name</label>
+                      <input type="text" name="centerName" class="form-control" id="validationDefault01" placeholder="Center Name" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationDefault02">Location</label>
+                      <input type="text" name="location" class="form-control" id="validationDefault02" placeholder="Location" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationDefaultUsername">Person Incharge</label>
+                      <div class="input-group">
+                        <input type="text" name="personIncharge" class="form-control" id="validationDefaultUsername" placeholder="Person Incharge" aria-describedby="inputGroupPrepend2" required>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary mb-4" type="submit">Submit</button>
+                </form>
+
+
+                <button id="show-hide-toggle" type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-plus" aria-hidden="true"></i> Add centers</button>
+              </div>
+              <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <p class="display-4 text-center">Volunteers</p>
+
+                <ul class="list-group">
+                  <li class="list-group-item" style="border: none;">
+                    <div class="row">
+                        <div class="col-md-1">
+                            S. No.
+                        </div>
+                        <div class="col-md-2">
+                            Name
+                        </div>
+                        <div class="col-md-3">
+                            Mobile no.
+                        </div>
+                        <div class="col-md-3">
+                            Email-Id
+                        </div>
+                         <div class="col-md-3">
+                            Location
+                        </div>
+
+                    </div>
+                  </li>
+                  <hr>
+<!-- to repeat start -->
+
+<% var v=1; %>
+  <% volunteers.forEach(function(volunteer){ %>
+                  <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <%= v %>
+                        </div>
+                        <div class="col-md-2">
+                            <%= volunteer.fname %><%= volunteer.lname %>
+                        </div>
+                        <div class="col-md-3">
+                            <%= volunteer.phoneNumber %>
+                        </div>
+                        <div class="col-md-3">
+                            <%= volunteer.email %>
+                        </div>
+                         <div class="col-md-3">
+                              <%= volunteer.address %>
+                        </div>
+                    </div>
+                  </li>
+                  <% v++; }); %>
+<!-- to repeat Ends -->
+                </ul>
+              </div>
+
+
+              <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                <p class="display-4 text-center">Students</p>
+
+                <ul class="list-group">
+                  <li class="list-group-item" style="border: none;">
+                    <div class="row">
+                        <div class="col-md-1">
+                            S. No.
+                        </div>
+                        <div class="col-md-2">
+                            Enrollment no
+                        </div>
+                        <div class="col-md-2">
+                            Name
+                        </div>
+                        <div class="col-md-3">
+                            Standard/Class
+                        </div>
+                         <div class="col-md-3">
+                            Center
+                        </div>
+
+                    </div>
+                  </li>
+                  <hr>
+<!-- to repeat start -->
+                  <li class="list-group-item">
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            1
+                        </div>
+                        <div class="col-md-2">
+                            9877
+                        </div>
+                        <div class="col-md-2">
+                            Raman
+                        </div>
+                        <div class="col-md-3">
+                            6th
+                        </div>
+                         <div class="col-md-3">
+                            lajpat nagar
+                        </div>
+
+                    </div>
+                  </li>
+<!-- to repeat Ends -->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+    </div>
+
+
+
+<% include ../partials/footercontent %>
+
+<% include ../partials/footer %>
+
+
+    <script type="text/javascript">
+    $("#show-hide-toggle").click(function(){
+        $("#add-center-form").toggle();
+    });
+    </script>

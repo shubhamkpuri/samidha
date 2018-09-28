@@ -75,8 +75,24 @@ app.get("/volunteer/show", function(req, res){
 
 });
 
+app.get("/volunteer/admin", function(req, res){
+	Volunteer.find({},(err,volunteers)=>{
 
+    res.render("volunteers/admin.ejs");
+  });
 
+});
+app.post("/centers",(req,res)=>{
+	var newcenter = new center({
+		location: req.body.location,
+    personIncharge: req.body.personIncharge,
+    centerName: req.body.centerName,
+	});
+	center.create(newcenter,(err, center)=>{
+		center.save();
+		res.redirect("/admin");
+	})
+})
 // Create a new volunteer
 app.post("/volunteer", function(req, res){
   var volunteer = new Volunteer ({
@@ -84,7 +100,7 @@ app.post("/volunteer", function(req, res){
             email    : req.body.email,
             lname   : req.body.lname,
             address : req.body.address,
-            number : req.body.number,
+            phoneNumber : req.body.phoneNumber,
             center1:req.body.center1,
             center2:req.body.center2,
             center3:req.body.center3
@@ -129,32 +145,46 @@ app.get("/login", function(req, res){
 app.post("/register", function(req, res){
 	var user = new User ({
 						fname : req.body.fname,
-						username    : req.body.email,
+						username    : req.body.username,
             lname: req.body.lname,
             password: String,
             address : req.body.address,
             profileImage : req.body.profileImage,
 					});
+					console.log(user);
 	User.register(user, req.body.password, function(err, user){
 		if(err){
 			req.flash("error", err.message);
 			console.log(err.message);
+			console.log('err.message');
+
 			res.redirect("/");
 		}
-		else {
 				passport.authenticate("local")(req, res, function(){
+
+					console.log(user);
 				req.flash("success", "Welcome to Notes " + user.username);
 				res.redirect("/");
 			});
-		}
+
 	});
 });
+app.get('/admin',isLoggedIn,(req,res)=>{
+	Volunteer.find({},(err,volunteers)=>{
+			center.find({},(err,centers)=>{
+				res.render("admindashboard/show",{
+					volunteers:volunteers,
+					centers:centers
+				});
 
+			});
+  });
+})
 
 // Login
 app.post("/login", passport.authenticate("local",
 	{
-		successRedirect : "/",
+		successRedirect : "/admin",
 		failureRedirect : "/login",
 		failureFlash: true
 	}), function(req, res){
