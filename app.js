@@ -60,8 +60,19 @@ app.get("/", function(req, res){
 
 });
 
-app.get("/volunteer", function(req, res){
-	res.render("volunteer");
+app.get("/volunteer/new", function(req, res){
+
+
+    res.render("volunteers/new.ejs");
+
+
+});
+app.get("/volunteer/show", function(req, res){
+	Volunteer.find({},(err,volunteers)=>{
+
+    res.render("volunteers/show.ejs",{volunteers:volunteers});
+  });
+
 });
 
 // Show all notes
