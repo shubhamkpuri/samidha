@@ -53,8 +53,9 @@ var smtpTransport = nodemailer.createTransport({
 });
 
 app.get("/", function(req, res){
-	Volunteer.find({},(err,volunteer)=>{
-    res.render("index",{volunteer:volunteer});
+	Volunteer.find({},(err,volunteers)=>{
+
+    res.render("index",{volunteers:volunteers});
   });
 
 });

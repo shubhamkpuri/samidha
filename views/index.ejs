@@ -118,7 +118,6 @@
   </div>
   <!--/.Carousel Wrapper-->
    <!-- Card Section -->
-
   <section class="content-section bg-light pt-5 pb-5">
       <div class="container">
         <div class="row d-flex flex-wrap p-2 justify-content-around">
@@ -127,12 +126,13 @@
               <div>
                 <h1>Volunteers</h1>
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-light">Prathmesh Maurya</li>
-                  <li class="list-group-item list-group-item-light">Shubham Puri</li>
-                  <li class="list-group-item list-group-item-light">Sanju Kumar</li>
-                  <li class="list-group-item list-group-item-light">Chandan</li>
-                  <li class="list-group-item list-group-item-light">Anupam</li>
-                  <li class="list-group-item list-group-item-light">Lakshya</li>
+
+                  <% for(var i=0;i<6;i++) {
+                   %>
+                  <li class="list-group-item list-group-item-light"><%= volunteers[i].fname %></li>
+                  <%
+                 } %>
+
                 </ul>
                 <input class="btn btn-light btn-rounded" type="button" name="button3" value="See All" id="" />
               </div>
