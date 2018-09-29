@@ -13,7 +13,7 @@ var express			 		= require('express'),
 User					= require('./models/user');
   require('dotenv/config');
 // mongoose.connect("mongodb://localhost/notes", { useNewUrlParser: true });
-mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
+mongoose.connect(port.env.DATABASE, { useNewUrlParser: true });
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
@@ -106,7 +106,7 @@ app.post("/volunteer", function(req, res){
             center3:req.body.center3
 
           });
-console.log(volunteer);
+//console.log(volunteer);
 Volunteer.create(volunteer, function(err, newVolunteer){
 		if(err) {
 			req.flash("Error", "Something went wrong! Please try again.");
@@ -141,6 +141,11 @@ app.get("/login", function(req, res){
 	res.render("login");
 });
 
+
+app.get("/gallery", function(req, res){
+	res.render("gallery");
+});
+
 // Register a new user
 app.post("/register", function(req, res){
 	var user = new User ({
@@ -151,20 +156,20 @@ app.post("/register", function(req, res){
             address : req.body.address,
             profileImage : req.body.profileImage,
 					});
-					console.log(user);
+					//console.log(user);
 	User.register(user, req.body.password, function(err, user){
 		if(err){
 			req.flash("error", err.message);
 			console.log(err.message);
-			console.log('err.message');
+			//console.log('err.message');
 
 			res.redirect("/");
 		}
 				passport.authenticate("local")(req, res, function(){
 
-					console.log(user);
+					//console.log(user);
 				req.flash("success", "Welcome to Notes " + user.username);
-				res.redirect("/");
+				res.redirect("/admin");
 			});
 
 	});
@@ -209,6 +214,6 @@ function isLoggedIn(req, res, next){
 
 // Listening to the server
 
-app.listen(process.env.PORT || 8000, function(req, res){
+app.listen(process.env.PORT || 3000, function(req, res){
 	console.log("Server Started!");
 });

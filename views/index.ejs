@@ -2,7 +2,7 @@
 <% include partials/navbar %>
 
 
-  <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+<div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
 
     <ol class="carousel-indicators">
       <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
@@ -12,7 +12,7 @@
     <div class="carousel-inner" role="listbox">
 
       <div class="carousel-item active">
-        <div class="view" style="background-image: url('img/first.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view" style="background-image: url('img/second.jpg'); background-repeat: no-repeat; background-size: cover;">
 
           <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
 
@@ -21,7 +21,7 @@
                 <strong>SAMIDHA</strong>
               </h1>
 
-
+              
               <p class="mb-4 d-none d-md-block h4">
                 A platform that provides you an opportunity to contribute towards building a better and educated society by just giving an hour per week.
               </p>
@@ -33,22 +33,18 @@
                 <i class="fa fa-graduation-cap ml-2"></i>
               </a>
             </div>
-
+        
 
           </div>
 
         </div>
       </div>
-      <!--/First slide-->
 
-      <!--Second slide-->
       <div class="carousel-item">
-        <div class="view" style="background-image: url('img/second.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view" style="background-image: url('img/third.jpg'); background-repeat: no-repeat; background-size: cover;">
 
-          <!-- Mask & flexbox options-->
           <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
 
-            <!-- Content -->
             <div class="text-center white-text mx-5 wow fadeIn">
               <h1 class="mb-4">
                 <strong>"Education is the most powerful weapon which you can use to change the world."</strong>
@@ -58,27 +54,22 @@
                 <strong>~Nelson Mandela</strong>
               </p>
 
-              <a href="#" class="btn btn-outline-white btn-lg">Start Learning
+              <a href="#gallery" class="btn btn-outline-white btn-lg">Image Gallery
                 <i class="fa fa-graduation-cap ml-2"></i>
               </a>
             </div>
-            <!-- Content -->
 
           </div>
-          <!-- Mask & flexbox options-->
+
 
         </div>
       </div>
-      <!--/Second slide-->
 
-      <!--Third slide-->
       <div class="carousel-item">
-        <div class="view" style="background-image: url('img/third.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view" style="background-image: url('img/first.jpg'); background-repeat: no-repeat; background-size: cover;">
 
-          <!-- Mask & flexbox options-->
           <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
 
-            <!-- Content -->
             <div class="text-center white-text mx-5 wow fadeIn">
               <h1 class="mb-4">
                 <strong>"An investment in knowledge pays the best dividends."</strong>
@@ -88,23 +79,20 @@
                 <strong>~Benjamin Franklin</strong>
               </p>
 
-              <a href="#" class="btn btn--white btn-lg">
-                <i class="fa fa-graduation-cap ml-2"></i>Map
+              <a href="/volunteer/new" class="btn btn-outline-white btn-lg">Join as Volunteer
+                <i class="fa fa-graduation-cap ml-2"></i>
               </a>
             </div>
-            <!-- Content -->
+
 
           </div>
-          <!-- Mask & flexbox options-->
+
 
         </div>
       </div>
-      <!--/Third slide-->
+
 
     </div>
-    <!--/.Slides-->
-
-    <!--Controls-->
     <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
@@ -113,7 +101,7 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-    <!--/.Controls-->
+
 
   </div>
   <!--/.Carousel Wrapper-->
@@ -129,7 +117,7 @@
 
                   <% for(var i=0;i<6;i++) {
                    %>
-                  <li class="list-group-item list-group-item-light"><%= volunteers[i].fname %></li>
+                  <li class="list-group-item list-group-item-light"><%= volunteers[i].fname %> <%= volunteers[i].lname  %></li>
                   <%
                  } %>
 
@@ -149,7 +137,7 @@
                 <li class="list-group-item list-group-item-light">Hamdard Public School</li>
                   <li class="list-group-item list-group-item-light">Jp School</li>
               </ul>
-              <input class="btn btn-light btn-rounded" type="button" name="button5" value="See All" id="" />
+              <input class="btn btn-light btn-rounded disabled" type="button" name="button5" value="See All" id="" />
             </div>
           </div>
 
@@ -161,48 +149,98 @@
 
 
       <!-- Maps Section -->
-      <!-- Maps Section -->
-
-         <section class="content-section bg-light pt-5 pb-5" id="center">
-           <div class="container text-center">
-             <div class="h1 pt-5 pb-5">
-               Our Centers
-             </div>
-             <div class="row d-flex flex-wrap pb-5">
-               <div class="col-lg-12">
-                   <div id="map" style="width: 100%; height: 70vh;"></div>
-
-               </div>
-             </div>
-
-           </div>
-         </section>
-
-           <!-- Maps Section Ends -->
-
-           <!-- Image Gallery Start-->
-           <section class="content-section bg-light pt-5 pb-5" id="center">
-           <div class="container text-center">
-             <div class="h1 pt-5 pb-5">
-               Image Gallery
-             </div>
-             <div class="row d-flex flex-wrap pb-5">
-                 <div class="col-lg-4">
-                   <img src="img/first.jpg" alt="" style="height: 100%; width: 100%;">
-                 </div>
-                 <div class="col-lg-4">
-                   <img src="img/first.jpg" alt="" style="height: 100%; width: 100%;">
-                 </div>
-                 <div class="col-lg-4">
-                   <img src="img/first.jpg" alt="" style="height: 100%; width: 100%;">
-                 </div>
-             </div>
-
-           </div>
-         </section>
+     <!-- Map section starts -->
+    <section class="content-section bg-light pb-5" id="center">
+      <div class="container text-center">
+        <div class="h1 pt-5 pb-5">
+          Our Centers
+        </div>
+        <div class="row d-flex flex-wrap pb-5">
+          <div class="col-lg-12">
+              <div id="map" style="width: 100%; height: 70vh;"></div>
+           
+          </div>
+        </div>
+    
+      </div>
+    </section>
 
 
-           <!-- Image Gallery Ends -->
+    <section class="content-section bg-light" id="gallery">
+      <div class="container text-center">
+        <div class="h1 pb-5">
+          Image Gallery
+        </div>
+        <div class="row mb-2">
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" style="height: 250px;" src="img/samidha1.jpeg" alt="Samidha">
+              <div class="card-body">
+                <h5 class="card-title">Samidha Image</h5>
+        <!--         <p class="card-text">Text Goes Here</p> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" style="height: 250px;" src="img/samidha2.jpeg" alt="Bluepin">
+              <div class="card-body">
+                <h5 class="card-title">Bluepin Image</h5>
+          <!--       <p class="card-text">Text Goes Here</p> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" style="height: 250px;" src="img/samidha3.jpeg" alt="Samidha">
+              <div class="card-body">
+                <h5 class="card-title">Samidha Image</h5>
+   <!--              <p class="card-text">Text Goes Here</p> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" style="height: 250px;" src="img/samidha4.jpeg" alt="Samidha">
+              <div class="card-body">
+                <h5 class="card-title">Samidha Image</h5>
+       <!--          <p class="card-text">Text Goes Here</p> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" style="height: 250px;" src="img/samidha5.jpeg" alt="Samidha">
+              <div class="card-body">
+                <h5 class="card-title">Samidha Image</h5>
+         <!--        <p class="card-text">Text Goes Here</p> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" style="height: 250px;" src="img/samidha6.jpeg" alt="Samidha">
+              <div class="card-body">
+                <h5 class="card-title">Samidha Image</h5>
+          <!--       <p class="card-text">Text Goes Here</p> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-2 p-3">
+          <a class="btn btn-light" href="/gallery">See All</a>
+        </div>
+
+      </div>
+
+
+    </section>
+
+
+      <!-- Image Gallery Ends -->
 
 
 
